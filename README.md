@@ -34,12 +34,12 @@ QuizApp/
 ├── package.json              
 ├── tsconfig.json
 │
+├── assets/
+│   └── (Imagens, ícones, fontes)
+│
 └── src/
     ├── @types/
     │   └── navigation.ts     ← RootStackParamList (Tipagem das rotas)
-    │
-    ├── assets/
-    │   └── (Imagens, ícones, fontes)
     │
     ├── components/
     │   ├── Button/
