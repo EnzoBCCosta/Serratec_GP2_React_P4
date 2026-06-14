@@ -24,6 +24,8 @@ Um aplicativo mobile de perguntas e respostas desenvolvido em **React Native** c
 
 A estrutura de pastas foi modularizada para separar componentes visuais, lógica de negócios (hooks customizados) e chamadas de serviços de forma limpa:
 
+# antes de usar alguma pasta do src apague o .txt
+
 ```text
 QuizApp/
 ├── index.ts                  ← Entry point (registerRootComponent)
