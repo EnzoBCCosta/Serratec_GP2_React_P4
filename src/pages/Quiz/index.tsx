@@ -5,15 +5,12 @@ import { Button } from '../../components/Button/index'
 
 export default function Quiz() {
 
-    
-
     return(
         <View style={styles.container}>
             <Text style={styles.texto}>
-                aoooooo
             </Text>
 
-            <Button title='teste' cor='#f20e0e' raio={25}/>
+            <Button title="teste"/>
 
         </View>
     );

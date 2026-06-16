@@ -3,17 +3,20 @@ import { styles } from "./Styles";
 
 interface ButtonProps extends TouchableOpacityProps {
     title: string,
-    cor: string,
-    raio: number,
+    corTitle?: string,
+    familyTitle?: string,
+    corButton?: string,
+    raio?: number,
 }
 
-export const Button = ({ title, cor, raio, ...rest}: ButtonProps) => {
+export const Button = ({ title, corTitle= '#ffffff', familyTitle="", corButton= '#f3ba2b', raio=0, ...rest}: ButtonProps) => {
 
-    return<TouchableOpacity activeOpacity={0.7} style={[styles.baseButton,
-            { backgroundColor: cor, borderRadius: raio}]} {...rest}>
+    const fredStyles = styles(corTitle, familyTitle, corButton, raio);
+
+    return<TouchableOpacity activeOpacity={0.7} style={fredStyles.baseButton} {...rest}>
                 
-          <Text style={styles.baseText}>
-            { title }
-          </Text>
+            <Text style={fredStyles.baseText}>
+                { title }
+            </Text>
         </TouchableOpacity>;
 }
