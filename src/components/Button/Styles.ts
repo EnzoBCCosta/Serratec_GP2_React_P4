@@ -1,10 +1,10 @@
 import { StyleSheet, TouchableOpacityProps } from "react-native";
 
-export const styles = (corTitle: string, familyTitle: string, corButton: string, raio: number) => StyleSheet.create({
+export const styles = (height: number, width: number, corTitle: string, familyTitle: string, corButton: string, raio: number) => StyleSheet.create({
 
     baseButton: {
-        width: 320,
-        height: 42,
+        width: width,
+        height: height,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: corButton,
