@@ -6,11 +6,15 @@ export const styles = StyleSheet.create({
         flex: 1,
         backgroundColor:'#121119',
         alignItems: 'center',
-
+    },
+    card: {
+        marginTop: 100,
+        marginBottom: 50,
+        alignSelf: 'flex-start',
+        
     },
     enunciado: {
         width: 350,
-        marginTop: 200,
         marginBottom: 100,
         alignSelf: 'flex-start',
         marginLeft: 20,
