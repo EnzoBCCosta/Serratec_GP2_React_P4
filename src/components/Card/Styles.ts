@@ -9,7 +9,6 @@ export const styles = (corTitle: string, tamTitle: number, familyTitle: string, 
         height: height,
         width: widht,
         backgroundColor: corCard,
-
     },
     texto: {
 

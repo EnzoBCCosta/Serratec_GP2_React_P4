@@ -1,6 +1,6 @@
 import { StyleSheet, TouchableOpacityProps } from "react-native";
 
-export const styles = (height: number, width: number, corTitle: string, familyTitle: string, corButton: string, raio: number) => StyleSheet.create({
+export const styles = (tamButton: number, height: number, width: number, corTitle: string, familyTitle: string, corButton: string, raio: number) => StyleSheet.create({
 
     baseButton: {
         width: width,
@@ -12,7 +12,8 @@ export const styles = (height: number, width: number, corTitle: string, familyTi
     },
 
     baseText: {
-        fontSize: 15,
+        fontWeight: 'bold',
+        fontSize: tamButton,
         color: corTitle,
         fontFamily: familyTitle
     },

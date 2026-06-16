@@ -15,7 +15,7 @@ interface CardProps extends ViewProps{
     widht?: number,
 };
 
-export const Card = ({title, corTitle='#ffffff', tamTitle=20, familyTitle='', height=20, widht=200, corCard='#64B9F9', ...rest}:CardProps) => {
+export const Card = ({title, corTitle='#ffffff', tamTitle=20, familyTitle='', height=50, widht=240, corCard='#64B9F9', ...rest}:CardProps) => {
 
     const cardStyles = styles(corTitle, tamTitle, familyTitle, corCard, height, widht);
 

@@ -8,16 +8,17 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     card: {
+        width: '100%',
         marginTop: 100,
         marginBottom: 50,
         alignSelf: 'flex-start',
-        
     },
-    enunciado: {
-        width: 350,
+    questao: {
+        width: '100%',
         marginBottom: 100,
         alignSelf: 'flex-start',
         marginLeft: 20,
+        paddingRight: 40,
     },
     enunciadoTexto: {
         color: 'white',
@@ -26,5 +27,7 @@ export const styles = StyleSheet.create({
     },
     respostas: {
         gap: 30,
+        alignItems: 'center',
+
     }
 })
