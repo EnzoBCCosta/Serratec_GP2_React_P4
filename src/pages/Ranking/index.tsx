@@ -1,62 +1,9 @@
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import { useEffect, useState } from "react";
 import RankingCard from "../../components/RankingCard";
-import { getRanking, addPlayer } from "../../services/rankingStorage";
-import { RankingPlayer } from "../../@types/ranking";
+import { useRanking } from "../../context/RankingContext";
 
 export default function Ranking() {
-  const [ranking, setRanking] = useState<RankingPlayer[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadData() {
-      try {
-        await addPlayer({
-  nome: "jonh quiz1",
-  categoria: "História",
-  acertos: 7,
-  totalPerguntas: 10,
-});
-
-await addPlayer({
-  nome: "Jonh quiz2",
-  categoria: "Geografia",
-  acertos: 5,
-  totalPerguntas: 10,
-});
-
-await addPlayer({
-  nome: "jonh quiz 3",
-  categoria: "Ciências",
-  acertos: 9,
-  totalPerguntas: 10,
-});
-
-        const data = await getRanking();
-
-        const ordered = data
-       .sort((a, b) => {
-       if (b.acertos !== a.acertos) {
-       return b.acertos - a.acertos;
-       }
-
-       return b.totalPerguntas - a.totalPerguntas;
-       })
-       .map((player, index) => ({
-       ...player,
-       posicao: index + 1,
-       }));
-
-        setRanking(ordered);
-      } catch (error) {
-        console.error("Erro ao carregar ranking:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadData();
-  }, []);
+  const { ranking, loading } = useRanking();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -98,7 +45,6 @@ const styles = StyleSheet.create({
     paddingTop: 80,
     paddingBottom: 30,
   },
-
   header: {
     marginHorizontal: 15,
     flexDirection: "row",
@@ -106,13 +52,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 35,
   },
-
   titulo: {
     color: "white",
     fontSize: 28,
     fontWeight: "bold",
   },
-
   backButtonContainer: {
     width: 40,
     height: 40,
@@ -120,17 +64,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-
   backButton: {
     color: "white",
     fontSize: 22,
     fontWeight: "bold",
   },
-
   rankingContainer: {
     paddingHorizontal: 20,
   },
-
   emptyText: {
     color: "white",
     textAlign: "center",
