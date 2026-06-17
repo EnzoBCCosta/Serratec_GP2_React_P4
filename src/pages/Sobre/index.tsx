@@ -5,10 +5,10 @@ import React from "react";
 export default function Sobre() {
   return (
   
-  <View>
+  <View style={styles.container}>
     
     <Image
-        source={require("../../../assets/LOGO-Quiz.png")}
+        source={require("../../../assets/LOGO-QUIZ.png")}
         style={styles.logo}
       />
 
@@ -23,28 +23,28 @@ export default function Sobre() {
       </Text>
 
       <Text style={styles.secaoProgramacao}>
-        Programação
+        Programação :
       </Text>
 
       <Text style={styles.texto}>
-        Home Quiz - Felipe Damásio <br />
-        Ranking - Carlos Eduardo   
-        Categoria - Gabriel Ecard
-        Resultado - Vitor Ribeiro
+        Home Quiz - Felipe Damásio {'\n'} 
+        Ranking - Carlos Eduardo   {'\n'}
+        Categoria - Gabriel Ecard  {'\n'}
+        Resultado - Vitor Ribeiro  {'\n'}
         Créditos - Vinicius Lamas
       </Text>
 
       <Text style={styles.secaoDesign}>
-        Design
+        Design :
       </Text>
 
       <Text style={styles.texto}>
-        Visual Key - Enzo Costa
+        Visual Key - Enzo Costa {'\n'}
         UI - Enzo Costa
       </Text>
 
       <Text style={styles.secaoMusica}>
-        Músicas
+        Músicas :
       </Text>
 
       <Text style={styles.texto}>
