@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   logo: {
-    width: 220,
-    height: 220,
+    width: 300,
+    height: 300,
     marginBottom: 48,
   },
   containerBotoes: {
