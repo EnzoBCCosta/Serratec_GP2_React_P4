@@ -43,8 +43,7 @@ export const styles = StyleSheet.create({
         color: '#ffffff',
         marginBottom: 12,
     },
-    botoes: {
-        gap: 16,
-        marginTop: 8,
+    botao: {
+        marginBottom: 16,
     },
 });
