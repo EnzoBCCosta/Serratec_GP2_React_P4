@@ -1,18 +1,45 @@
-import React from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { styles } from './Styles'
 import { View, Text, ScrollView} from 'react-native';
 import { Button } from '../../components/Button/index'
-import { Card } from '../../components/Card/index'
+import { Card } from '../../components/Card/index';
+import { getToken, getQuestion } from '../../services/triviaService';
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function Quiz() {
 
     const tamButton = 47;
     const raioButton = 20;
 
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const {qtdQuestions, category, difficulty} = location.state;
+
+    const [token, setToken] = useState('');
+    const [question, setQuestion] = useState([]);
+    const [pontos, setPontos] = useState(0);
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        async function starter() {
+            try {
+                const response = await getQuestion(token, qtdQuestions, difficulty, category);
+                setQuestion(response.data.results);
+            } catch (erro) {
+                console.error("Ocorreu um erro ao buscar as questões: ", erro);
+            }
+        }
+
+        starter();
+    },[]);
+
+
+
     return(
         <View style={styles.container}>
             <View style={styles.card}>
-                <Card title='Questao' corCard='#C41E3A'/>
+                <Card title= 'Questão' corCard='#C41E3A'/>
             </View>
 
             <ScrollView style={styles.questao}>

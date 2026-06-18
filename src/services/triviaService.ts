@@ -10,11 +10,11 @@ export async function getToken() {
     }
 }
 
-export async function getPerguntas(Token: string, dificuldade: string, categoria: string) {
+export async function getQuestion(Token: string, quantidade: number, dificuldade: string, categoria: number) {
     try {
         const response = await api.get('/api.php', {
             params: {
-                amount: 1,
+                amount: quantidade,
                 category: categoria,
                 difficulty: dificuldade,
                 token: Token,
