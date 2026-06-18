@@ -3,7 +3,7 @@ import { LogBox, StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
 
 container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: "#1E002F",
     alignItems: "center",
     padding: 20,
@@ -42,6 +42,7 @@ texto:{
     fontSize: 16,
     textAlign: "center",
     lineHeight: 30,
+    
 },
 
 secaoDesign:{
@@ -58,9 +59,24 @@ secaoMusica:{
     fontWeight: "bold",
     marginBottom: 10,
     marginTop: 10,
+},
+
+secaoGit:{
+    color: "#FFFFFF",
+    fontSize: 26,
+    fontWeight: "bold",
+    marginBottom: 10,
+    marginTop: 10,
+},
+
+link:{
+    color:"#64B9F9",
+    fontSize: 16,
+    textAlign: "center",
+    lineHeight: 30,
+    // textDecorationLine:"underline",
+    
 }
-
-
 
 
 
