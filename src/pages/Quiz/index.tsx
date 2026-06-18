@@ -6,6 +6,15 @@ import { Card } from '../../components/Card/index';
 import { getToken, getQuestion } from '../../services/triviaService';
 import { useLocation, useNavigate } from 'react-router-dom'
 
+interface PerguntaTrivia {
+    category: string;
+    type: string;
+    difficulty: string;
+    question: string;
+    correct_answer: string;
+    incorrect_answers: string[];
+}
+
 export default function Quiz() {
 
     const tamButton = 47;
@@ -24,22 +33,22 @@ export default function Quiz() {
     useEffect(() => {
         async function starter() {
             try {
-                const response = await getQuestion(token, qtdQuestions, difficulty, category);
+                const Token = await getToken();
+                setToken(Token);
+
+                const response = await getQuestion(Token, qtdQuestions, difficulty, category);
                 setQuestion(response.data.results);
             } catch (erro) {
                 console.error("Ocorreu um erro ao buscar as questões: ", erro);
             }
         }
-
         starter();
     },[]);
-
-
 
     return(
         <View style={styles.container}>
             <View style={styles.card}>
-                <Card title= 'Questão' corCard='#C41E3A'/>
+                <Card title={`Categoria: ${question[0].category}`}/>
             </View>
 
             <ScrollView style={styles.questao}>
