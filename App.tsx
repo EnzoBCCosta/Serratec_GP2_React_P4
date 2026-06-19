@@ -6,5 +6,8 @@ export default function App() {
     <RankingProvider>
       <Ranking />
     </RankingProvider>
+      <Home />
+      <StatusBar style="light" />
+    </>
   );
 }
