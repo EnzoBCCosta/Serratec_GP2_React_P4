@@ -8,13 +8,13 @@ import Resultado from "./src/pages/Resultado/index"
 
 export default function App() {
   return (
-    <>
+    <RankingProvider>
       <Home /> 
       <Categorias />
       <Dificuldade />
       <Quiz /> 
       <Resultado />
       <Ranking />
-    </>
+    </RankingProvider>
   );
 }
