@@ -1,135 +1,141 @@
-import React, { use, useEffect, useState } from 'react';
-import { styles } from './Styles'
-import { View, Text, ScrollView} from 'react-native';
-import { Button } from '../../components/Button/index'
-import { Card } from '../../components/Card/index';
+import React, { useEffect, useState } from 'react';
+import { styles } from './Styles';
+import { View, Text, ScrollView } from 'react-native';
+import { Button } from '../../components/Button';
+import { Card } from '../../components/Card';
 import { getToken, getQuestion } from '../../services/triviaService';
-import { useLocalSearchParams, router } from 'expo-router';
+
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../routes/AppRoutes';
 
 interface apiBack {
-    category: string;
-    type: string;
-    difficulty: string;
-    question: string;
-    correct_answer: string;
-    incorrect_answers: string[];
+  category: string;
+  type: string;
+  difficulty: string;
+  question: string;
+  correct_answer: string;
+  incorrect_answers: string[];
 }
 
 interface Options {
-    value: string;
-    correct: boolean;
+  value: string;
+  correct: boolean;
 }
 
 export default function Quiz() {
+  const tamButton = 47;
+  const raioButton = 20;
 
-    const tamButton = 47;
-    const raioButton = 20;
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList, 'Quiz'>>();
 
-    const { qtdQuestions, category, difficulty } = useLocalSearchParams();
+  const route =
+    useRoute<RouteProp<RootStackParamList, 'Quiz'>>();
 
-    const [token, setToken] = useState('');
-    const [question, setQuestion] = useState<apiBack[]>([]);
-    const [pontos, setPontos] = useState(0);
-    const [count, setCount] = useState(0);
-    const [memoryOpcoes, setMemoryOpcoes] = useState<Options[]>([]);
+  const { qtdQuestions, category, difficulty } = route.params;
 
-    const [opcSelected, setOpcSelected] = useState(false);
+  const [token, setToken] = useState('');
+  const [question, setQuestion] = useState<apiBack[]>([]);
+  const [pontos, setPontos] = useState(0);
+  const [count, setCount] = useState(0);
+  const [memoryOpcoes, setMemoryOpcoes] = useState<Options[]>([]);
+  const [opcSelected, setOpcSelected] = useState(false);
 
-    useEffect(() => {
-        async function starter() {
-            try {
-                const Token = await getToken();
-                setToken(Token);
+  useEffect(() => {
+    async function starter() {
+      const Token = await getToken();
+      setToken(Token);
 
-                const quantidade = Number(qtdQuestions);
-                const categoria = Number(category);
-                const dificuldade = String(difficulty);
+      const response = await getQuestion(
+        Token,
+        Number(qtdQuestions),
+        String(difficulty),
+        Number(category)
+      );
 
-                const response = await getQuestion(Token, quantidade, dificuldade, categoria);
-                setQuestion(response.data.results);
-            } catch (erro) {
-                console.error("Ocorreu um erro ao buscar as questões: ", erro);
-            }
-        }
-        starter();
-    },[]);
-
-    useEffect(() => {
-
-        if(question.length === 0) {
-            return;
-        }
-
-        const questionAtual = question[count];
-        const incorrect = questionAtual.incorrect_answers.map(qst => ({value: qst, index: Math.random(), correct: false}));
-        const correct = {value: questionAtual.correct_answer, index: Math.random(), correct: true};
-        const buttons = [...incorrect, correct].sort((a, b) => a.index - b.index);
-
-        setMemoryOpcoes(buttons);
-        setOpcSelected(false);
-
-    }, [count, question]);
-
-    function responder(option: {value: string, correct: boolean}) {
-
-        if(opcSelected) {
-            return;
-        }
-
-        if(option.correct) {
-            setPontos(pontos + 1);
-        }
-
-        setOpcSelected(true);
-        
-        setTimeout(() => {
-            if(count < question.length - 1) {
-                upCount();
-            } else {
-                //conectar dps com a resultado
-            }
-        }, 3000);
+      setQuestion(response.data.results);
     }
 
-    function upCount() {
-        setCount(count+1);
+    starter();
+  }, []);
+
+  useEffect(() => {
+    if (question.length === 0) return;
+
+    const questionAtual = question[count];
+
+    const incorrect = questionAtual.incorrect_answers.map(qst => ({
+      value: qst,
+      correct: false,
+      index: Math.random(),
+    }));
+
+    const correct = {
+      value: questionAtual.correct_answer,
+      correct: true,
+      index: Math.random(),
+    };
+
+    setMemoryOpcoes([...incorrect, correct].sort((a, b) => a.index - b.index));
+    setOpcSelected(false);
+  }, [count, question]);
+
+  function responder(option: { value: string; correct: boolean }) {
+    if (opcSelected) return;
+
+    if (option.correct) {
+      setPontos(pontos + 1);
     }
 
-    //PLACEHOLDER: alterar depois
+    setOpcSelected(true);
 
-    if (question.length === 0) {
-        return (
-            <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
-                <Text style={{ color: 'white', fontSize: 18 }}>Carregando Quiz...</Text>
-            </View>
-        );
-    }
+    setTimeout(() => {
+      if (count < question.length - 1) {
+        setCount(count + 1);
+      } else {
+        navigation.replace('Resultado', {
+          pontos,
+          total: question.length,
+        });
+      }
+    }, 3000);
+  }
 
-    return(
-        <View style={styles.container}>
-            <View style={styles.card}>
-                <Card title={`Questão: ${count+1}`}/>
-            </View>
-
-            <ScrollView style={styles.questao}>
-                <Text style={styles.enunciadoTexto}>
-
-                    {question[count].question}
-                    
-                </Text>
-            </ScrollView>
-
-            <View>
-                {memoryOpcoes.map((option, index) => (
-                    <Button 
-                        title={option.value} 
-                        height={tamButton} 
-                        raio={raioButton}
-                        {...opcSelected === true ? {corButton: option.correct ? '#29c41e' : '#C41E3A'}: {}}
-                        onPress={() => responder(option)}
-                    />
-                ))}
-            </View>
-        </View>
+  if (question.length === 0) {
+    return (
+      <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
+        <Text style={{ color: 'white', fontSize: 18 }}>Carregando Quiz...</Text>
+      </View>
     );
+  }
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.card}>
+        <Card title={`Questão: ${count + 1}`} />
+      </View>
+
+      <ScrollView style={styles.questao}>
+        <Text style={styles.enunciadoTexto}>
+          {question[count].question}
+        </Text>
+      </ScrollView>
+
+      <View>
+        {memoryOpcoes.map((option, index) => (
+          <Button
+            key={index}
+            title={option.value}
+            height={tamButton}
+            raio={raioButton}
+            {...(opcSelected
+              ? { corButton: option.correct ? '#29c41e' : '#C41E3A' }
+              : {})}
+            onPress={() => responder(option)}
+          />
+        ))}
+      </View>
+    </View>
+  );
 }
