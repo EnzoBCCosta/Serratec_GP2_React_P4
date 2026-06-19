@@ -21,6 +21,7 @@ interface apiBack {
 interface Options {
   value: string;
   correct: boolean;
+  index: number;
 }
 
 export default function Quiz() {
@@ -54,7 +55,7 @@ export default function Quiz() {
         Number(category)
       );
 
-      setQuestion(response.data.results);
+      setQuestion(response);
     }
 
     starter();
@@ -81,31 +82,41 @@ export default function Quiz() {
     setOpcSelected(false);
   }, [count, question]);
 
-  function responder(option: { value: string; correct: boolean }) {
+  function responder(option: Options) {
     if (opcSelected) return;
-
-    if (option.correct) {
-      setPontos(pontos + 1);
-    }
 
     setOpcSelected(true);
 
+    // 🔥 calcula pontuação segura (SEM bug de estado atrasado)
+    const novoPontos = option.correct ? pontos + 1 : pontos;
+
+    if (option.correct) {
+      setPontos(novoPontos);
+    }
+
     setTimeout(() => {
-      if (count < question.length - 1) {
-        setCount(count + 1);
-      } else {
-        navigation.replace('Resultado', {
-          pontos,
-          total: question.length,
-        });
-      }
+      setCount(prev => {
+        const proxima = prev + 1;
+
+        if (proxima < question.length) {
+          return proxima;
+        } else {
+          navigation.replace('Resultado', {
+            pontos: novoPontos,
+            total: question.length,
+          });
+          return prev;
+        }
+      });
     }, 3000);
   }
 
   if (question.length === 0) {
     return (
       <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
-        <Text style={{ color: 'white', fontSize: 18 }}>Carregando Quiz...</Text>
+        <Text style={{ color: 'white', fontSize: 18 }}>
+          Carregando Quiz...
+        </Text>
       </View>
     );
   }

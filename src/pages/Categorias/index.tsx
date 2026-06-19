@@ -33,7 +33,7 @@ export default function Categorias() {
 
   function handleSelecionarCategoria(id: number) {
     navigation.navigate('Dificuldade', {
-      categoryId: id,
+      category: id,
     });
   }
 

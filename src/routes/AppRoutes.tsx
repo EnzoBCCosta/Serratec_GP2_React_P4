@@ -11,16 +11,22 @@ import Ranking from "../pages/Ranking";
 export type RootStackParamList = {
   Home: undefined;
   Categorias: undefined;
-  Dificuldade: undefined;
+
+  Dificuldade: {
+    category: number;
+  };
+
   Quiz: {
     qtdQuestions: number;
     category: number;
     difficulty: string;
   };
+
   Resultado: {
     pontos: number;
     total: number;
   };
+
   Ranking: undefined;
 };
 

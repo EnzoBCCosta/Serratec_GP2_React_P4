@@ -26,7 +26,7 @@ export default function Dificuldade() {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
 
-  const { category } = route.params || {};
+ const category = route.params?.category;
 
   const [qtdQuestions, setQtdQuestions] = useState('');
   const [difficulty, setDifficulty] = useState<Dificuldade>('easy');
