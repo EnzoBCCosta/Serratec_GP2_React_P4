@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Image, TouchableOpacity, Text } from 'react-native';
 import styles from './homestyles';
+import Rodape from '../../components/Rodape/Rodape';
 
 export default function Home() {
   return (
@@ -11,28 +12,11 @@ export default function Home() {
         resizeMode="contain"
       />
 
-      <View style={styles.containerBotoes}>
-        <TouchableOpacity
-          style={[styles.botao, styles.botaoAzul]}
-          onPress={() => console.log('Iniciar Quiz')}
-        >
-          <Text style={styles.textoBotao}>Iniciar Quiz</Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.botaoPlay}>
+        <Text style={styles.iconePlay}>▶</Text>
+      </TouchableOpacity>
 
-        <TouchableOpacity
-          style={[styles.botao, styles.botaoAmarelo]}
-          onPress={() => console.log('Ver Ranking')}
-        >
-          <Text style={styles.textoBotao}>Ver Ranking</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={[styles.botao, styles.botaoVermelho]}
-          onPress={() => console.log('Sobre')} 
-        >
-          <Text style={styles.textoBotao}>Sobre</Text>
-        </TouchableOpacity>
-      </View>
+      <Rodape />
     </View>
   );
 }

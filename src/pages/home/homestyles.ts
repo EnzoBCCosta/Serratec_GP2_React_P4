@@ -6,36 +6,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#1a0d2e',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 24,
   },
   logo: {
     width: 300,
     height: 300,
     marginBottom: 48,
   },
-  containerBotoes: {
-    width: '100%',
-    gap: 16,
-  },
-  botao: {
-    width: '100%',
-    paddingVertical: 16,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  botaoAzul: {
+  botaoPlay: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
     backgroundColor: '#64B9F9',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  botaoAmarelo: {
-    backgroundColor: '#F3BA2B',
-  },
-  botaoVermelho: {
-    backgroundColor: '#C41E3A',
-  },
-  textoBotao: {
+  iconePlay: {
     color: '#fff',
-    fontSize: 16,
-    fontWeight: '700',
+    fontSize: 28,
   },
 });
 
