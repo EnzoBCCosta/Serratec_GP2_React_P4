@@ -1,3 +1,5 @@
+import React from "react";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -16,9 +18,9 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <RankingProvider>
-      <NavigationContainer>
+      {/* <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="Sobre"
           screenOptions={{ headerShown: false }}
         >
           <Stack.Screen name="Home" component={Home} />
@@ -26,10 +28,10 @@ export default function App() {
           <Stack.Screen name="Dificuldade" component={Dificuldade} />
           <Stack.Screen name="Quiz" component={Quiz} />
           <Stack.Screen name="Resultado" component={Resultado} />
-          <Stack.Screen name="Ranking" component={Ranking} />
+          <Stack.Screen name="Ranking" component={Ranking} /> */}
           <Sobre />
-        </Stack.Navigator>
-      </NavigationContainer>
+        {/* </Stack.Navigator>
+      </NavigationContainer> */}
     </RankingProvider>
-
+  )
 }

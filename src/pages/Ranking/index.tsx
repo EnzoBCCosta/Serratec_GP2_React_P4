@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import RankingCard from "../../components/RankingCard";
