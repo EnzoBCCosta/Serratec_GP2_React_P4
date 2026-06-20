@@ -1,5 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getRanking, addPlayer as addPlayerStorage, clearRanking } from "../services/rankingStorage";
+import {
+  getRanking,
+  addPlayer as addPlayerStorage,
+  clearRanking
+} from "../services/rankingStorage";
 import { RankingPlayer } from "../types/ranking";
 
 type RankingContextData = {
@@ -9,7 +13,9 @@ type RankingContextData = {
   clear: () => Promise<void>;
 };
 
-const RankingContext = createContext<RankingContextData>({} as RankingContextData);
+const RankingContext = createContext<RankingContextData>(
+  {} as RankingContextData
+);
 
 export function RankingProvider({ children }: { children: React.ReactNode }) {
   const [ranking, setRanking] = useState<RankingPlayer[]>([]);
@@ -17,8 +23,18 @@ export function RankingProvider({ children }: { children: React.ReactNode }) {
 
   async function loadRanking() {
     setLoading(true);
+
     const data = await getRanking();
-    setRanking(data);
+
+    const sorted = data
+      .sort((a, b) => b.acertos - a.acertos)
+      .slice(0, 5)
+      .map((player, index) => ({
+        ...player,
+        posicao: index + 1
+      }));
+
+    setRanking(sorted);
     setLoading(false);
   }
 
@@ -42,7 +58,7 @@ export function RankingProvider({ children }: { children: React.ReactNode }) {
         ranking,
         loading,
         addPlayer,
-        clear,
+        clear
       }}
     >
       {children}

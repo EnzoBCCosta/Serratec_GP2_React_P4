@@ -14,17 +14,20 @@ export type RootStackParamList = {
 
   Dificuldade: {
     category: number;
+    categoryName: string,
   };
 
   Quiz: {
     qtdQuestions: number;
     category: number;
+    categoryName: string;
     difficulty: string;
   };
 
   Resultado: {
     pontos: number;
     total: number;
+    category: number;
   };
 
   Ranking: undefined;

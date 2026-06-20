@@ -1,16 +1,19 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { RankingPlayer } from "../@types/ranking";
+import { RankingPlayer } from "../types/ranking";
 
 const STORAGE_KEY = "@quizgame_ranking";
 
 export async function getRanking(): Promise<RankingPlayer[]> {
   const stored = await AsyncStorage.getItem(STORAGE_KEY);
 
-  if (!stored) {
+  if (!stored) return [];
+
+  try {
+    return JSON.parse(stored);
+  } catch (error) {
+    console.log("Erro no ranking:", error);
     return [];
   }
-
-  return JSON.parse(stored);
 }
 
 export async function addPlayer(

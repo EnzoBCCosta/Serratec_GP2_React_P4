@@ -1,9 +1,15 @@
+import { useNavigation } from "@react-navigation/native";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import RankingCard from "../../components/RankingCard";
 import { useRanking } from "../../context/RankingContext";
 
 export default function Ranking() {
-  const { ranking, loading } = useRanking();
+  const { ranking, loading, clear } = useRanking();
+  const navigation = useNavigation<any>();
+
+  async function handleClearRanking() {
+    await clear();
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -11,8 +17,27 @@ export default function Ranking() {
         <Text style={styles.titulo}>Ranking:</Text>
 
         <View style={styles.backButtonContainer}>
-          <Text style={styles.backButton}>←</Text>
+          <Text
+            style={styles.backButton}
+            onPress={() => navigation.replace("Categorias")}
+          >
+            ←
+          </Text>
         </View>
+      </View>
+
+      {/* BOTÃO LIMPAR RANKING */}
+      <View style={{ alignItems: "center", marginBottom: 15 }}>
+        <Text
+          onPress={handleClearRanking}
+          style={{
+            color: "#C41E3A",
+            fontSize: 16,
+            fontWeight: "bold",
+          }}
+        >
+          Limpar Ranking
+        </Text>
       </View>
 
       <View style={styles.rankingContainer}>

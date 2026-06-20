@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import { styles } from './Styles';
 import Header from '../../components/Header';
@@ -10,6 +10,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../routes/AppRoutes';
 import { RouteProp } from '@react-navigation/native';
 
+import { useRanking } from '../../context/RankingContext';
+
 export default function Resultado() {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -17,19 +19,30 @@ export default function Resultado() {
   const route =
     useRoute<RouteProp<RootStackParamList, 'Resultado'>>();
 
-  const { pontos, total } = route.params;
-
+  const { pontos, total, categoria } = route.params;
+  
   const percentual = Math.round((pontos / total) * 100);
 
   const [nome, setNome] = useState('');
+
+  const { addPlayer } = useRanking();
 
   function handleJogarNovamente() {
     navigation.replace('Categorias');
   }
 
-  function handleVerRanking() {
-    navigation.navigate('Ranking');
-  }
+  async function handleVerRanking() {
+  if (!nome.trim()) return;
+
+  await addPlayer({
+   nome: nome.trim(),
+   categoria: categoria,
+   acertos: pontos,
+   totalPerguntas: total,
+    });
+
+  navigation.navigate('Ranking');
+}
 
   return (
     <View style={styles.container}>

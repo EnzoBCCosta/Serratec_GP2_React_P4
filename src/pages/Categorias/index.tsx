@@ -31,9 +31,10 @@ export default function Categorias() {
     carregarCategorias();
   }, []);
 
-  function handleSelecionarCategoria(id: number) {
+  function handleSelecionarCategoria(item : Categoria) {
     navigation.navigate('Dificuldade', {
-      category: id,
+      category: item.id,
+      categoryName: item.name,
     });
   }
 
@@ -72,7 +73,7 @@ export default function Categorias() {
               widht={320}
               height={50}
               corButton="#f3ba2b"
-              onPress={() => handleSelecionarCategoria(item.id)}
+              onPress={() => handleSelecionarCategoria(item)}
             />
           )}
         />

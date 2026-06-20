@@ -8,6 +8,8 @@ import Header from '../../components/Header';
 
 type Dificuldade = 'easy' | 'medium' | 'hard';
 
+
+
 const OPCOES_DIFICULDADE: { label: string; valor: Dificuldade }[] = [
   { label: 'Fácil', valor: 'easy' },
   { label: 'Médio', valor: 'medium' },
@@ -26,7 +28,7 @@ export default function Dificuldade() {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
 
- const category = route.params?.category;
+ const { category,categoryName } = route.params;
 
   const [qtdQuestions, setQtdQuestions] = useState('');
   const [difficulty, setDifficulty] = useState<Dificuldade>('easy');
@@ -42,6 +44,7 @@ export default function Dificuldade() {
 
     navigation.navigate('Quiz', {
       category,
+      categoryName,
       qtdQuestions: quantidadeFinal,
       difficulty,
     });

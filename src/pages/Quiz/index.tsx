@@ -34,7 +34,7 @@ export default function Quiz() {
   const route =
     useRoute<RouteProp<RootStackParamList, 'Quiz'>>();
 
-  const { qtdQuestions, category, difficulty } = route.params;
+  const { qtdQuestions, category,categoryName,  difficulty } = route.params;
 
   const [token, setToken] = useState('');
   const [question, setQuestion] = useState<apiBack[]>([]);
@@ -87,7 +87,7 @@ export default function Quiz() {
 
     setOpcSelected(true);
 
-    // 🔥 calcula pontuação segura (SEM bug de estado atrasado)
+    
     const novoPontos = option.correct ? pontos + 1 : pontos;
 
     if (option.correct) {
@@ -104,7 +104,8 @@ export default function Quiz() {
           navigation.replace('Resultado', {
             pontos: novoPontos,
             total: question.length,
-          });
+            categoria: categoryName,
+           }); 
           return prev;
         }
       });

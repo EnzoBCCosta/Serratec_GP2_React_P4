@@ -3,5 +3,5 @@ export interface RankingPlayer {
   categoria: string;
   acertos: number;
   totalPerguntas: number;
-  posicao: number;
+  posicao?: number;
 }
