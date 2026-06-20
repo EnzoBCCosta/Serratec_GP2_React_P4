@@ -10,6 +10,9 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../routes/AppRoutes';
 import { RouteProp } from '@react-navigation/native';
 
+import { addPlayer } from '../../services/rankingStorage';
+import { RankingPlayer } from "../../../types/ranking";
+
 export default function Resultado() {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -17,18 +20,37 @@ export default function Resultado() {
   const route =
     useRoute<RouteProp<RootStackParamList, 'Resultado'>>();
 
-  const { pontos, total } = route.params;
+  const { pontos, total, category } = route.params;
 
   const percentual = Math.round((pontos / total) * 100);
 
   const [nome, setNome] = useState('');
 
   function handleJogarNovamente() {
+    save();
     navigation.replace('Categorias');
   }
 
   function handleVerRanking() {
+    save();
     navigation.navigate('Ranking');
+  }
+
+  function save(){
+
+    if(nome.trim() === ''){
+      return;
+    }
+
+    const player: RankingPlayer = {
+      nome: nome,
+      acertos: pontos,
+      totalPerguntas: total,
+      categoria: category,
+      posicao: 0,
+    };
+
+    addPlayer(player);
   }
 
   return (

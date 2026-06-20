@@ -1,6 +1,6 @@
 export interface RankingPlayer {
   nome: string;
-  categoria: string;
+  categoria: number;
   acertos: number;
   totalPerguntas: number;
   posicao: number;
