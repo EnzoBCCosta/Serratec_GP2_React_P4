@@ -1,68 +1,83 @@
 import React, { useEffect, useState } from 'react';
-import { styles } from './Styles';
 import { View, Text, FlatList } from 'react-native';
-import { Button } from '../../components/Button/index'
+import { useNavigation } from '@react-navigation/native';
+
+import { styles } from './Styles';
+import { Button } from '../../components/Button/index';
 import Header from '../../components/Header';
 
 interface Categoria {
-    id: number;
-    name: string;
+  id: number;
+  name: string;
 }
 
 export default function Categorias() {
+  const navigation = useNavigation<any>();
+  const [categorias, setCategorias] = useState<Categoria[]>([]);
 
-    const [categorias, setCategorias] = useState<Categoria[]>([]);
+  useEffect(() => {
+    async function carregarCategorias() {
+      try {
+        const response = await fetch(
+          'https://tryvia.ptr.red/api_category.php'
+        );
+        const data = await response.json();
+        setCategorias(data.trivia_categories);
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
-    useEffect(() => {
-        async function carregarCategorias() {
-            try {
-                const response = await fetch(
-                    "https://tryvia.ptr.red/api_category.php"
-                );
+    carregarCategorias();
+  }, []);
 
-                const data = await response.json();
+  function handleSelecionarCategoria(item : Categoria) {
+    navigation.navigate('Dificuldade', {
+      category: item.id,
+      categoryName: item.name,
+    });
+  }
 
-                console.log(data);
+  return (
+    <View style={styles.container}>
+      <Header />
 
-                setCategorias(data.trivia_categories);
+      <View style={styles.background}>
+        <View style={styles.topo}>
+          <View style={styles.titulo}>
+            <Text style={styles.texto}>Escolha um tema:</Text>
+          </View>
 
-            } catch (error) {
-                console.log(error);
-            }
-        }
-
-        carregarCategorias()
-    },[]);
-
-    return(
-        <View style={styles.container}>
-            <Header/>
-            <View style={styles.background}>
-
-                <View style={styles.titulo}>
-                    <Text style={styles.texto}>Escolha um tema:</Text>
-                </View>
-
-                <FlatList
-                    data={categorias}
-                    keyExtractor={(item) => item.id.toString()}
-                    contentContainerStyle={{
-                        alignItems: "center",
-                        paddingTop: 20,
-                        paddingBottom: 20,
-                        gap: 12,
-                    }}
-                    renderItem={({ item }) => (
-                        <Button
-                            title={item.name}
-                            widht={320}
-                            height={50}
-                            corButton='#f3ba2b'
-                        />
-                    )}
-                />
-
-            </View>
+          <Button
+            title="Voltar"
+            height={45}
+            widht={90}
+            corButton="red"
+            raio={2}
+            onPress={() => navigation.goBack()}
+          />
         </View>
-    );
+
+        <FlatList
+          data={categorias}
+          keyExtractor={(item) => item.id.toString()}
+          contentContainerStyle={{
+            alignItems: 'center',
+            paddingTop: 20,
+            paddingBottom: 20,
+            gap: 12,
+          }}
+          renderItem={({ item }) => (
+            <Button
+              title={item.name}
+              widht={320}
+              height={50}
+              corButton="#f3ba2b"
+              onPress={() => handleSelecionarCategoria(item)}
+            />
+          )}
+        />
+      </View>
+    </View>
+  );
 }

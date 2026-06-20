@@ -11,14 +11,21 @@ export const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: '#180024'
     },
+    topo: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: 20,
+        width: '100%',
+        paddingHorizontal: -10,
+    },
     titulo: {
         backgroundColor: '#64B9F9',
         height: 60,
         width: 220,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 20,
-        marginLeft: 15,
+        paddingHorizontal: 10,
     },
     texto: {
         color: '#FFFFFF',
