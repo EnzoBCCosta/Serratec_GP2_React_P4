@@ -36,12 +36,12 @@ export default function Resultado() {
     navigation.navigate('Ranking');
   }
 
-  function save(){
+  async function save(){
 
     if(nome.trim() === ''){
       return;
     }
-
+ 
     const player: RankingPlayer = {
       nome: nome,
       acertos: pontos,
@@ -50,7 +50,7 @@ export default function Resultado() {
       posicao: 0,
     };
 
-    addPlayer(player);
+    await addPlayer(player);
   }
 
   return (
