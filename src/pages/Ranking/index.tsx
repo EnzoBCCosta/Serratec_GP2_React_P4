@@ -26,7 +26,6 @@ export default function Ranking() {
         </View>
       </View>
 
-      {/* BOTÃO LIMPAR RANKING */}
       <View style={{ alignItems: "center", marginBottom: 15 }}>
         <Text
           onPress={handleClearRanking}
