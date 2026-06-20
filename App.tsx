@@ -9,6 +9,7 @@ import Dificuldade from "./src/pages/Dificuldade/Index";
 import Quiz from "./src/pages/Quiz";
 import Resultado from "./src/pages/Resultado/index";
 import Ranking from "./src/pages/Ranking";
+import Sobre from './src/pages/Sobre';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,8 +27,9 @@ export default function App() {
           <Stack.Screen name="Quiz" component={Quiz} />
           <Stack.Screen name="Resultado" component={Resultado} />
           <Stack.Screen name="Ranking" component={Ranking} />
+          <Sobre />
         </Stack.Navigator>
       </NavigationContainer>
     </RankingProvider>
-  );
+
 }
