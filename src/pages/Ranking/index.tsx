@@ -19,7 +19,7 @@ export default function Ranking() {
         <View style={styles.backButtonContainer}>
           <Text
             style={styles.backButton}
-            onPress={() => navigation.replace("Categorias")}
+            onPress={() => navigation.replace("Home")}
           >
             ←
           </Text>
