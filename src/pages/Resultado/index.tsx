@@ -19,7 +19,7 @@ export default function Resultado() {
   const route =
     useRoute<RouteProp<RootStackParamList, 'Resultado'>>();
 
-  const { pontos, total, categoria } = route.params;
+  const { pontos, total, category } = route.params;
   
   const percentual = Math.round((pontos / total) * 100);
 
@@ -36,7 +36,7 @@ export default function Resultado() {
 
   await addPlayer({
    nome: nome.trim(),
-   categoria: categoria,
+   categoria: category,
    acertos: pontos,
    totalPerguntas: total,
     });
