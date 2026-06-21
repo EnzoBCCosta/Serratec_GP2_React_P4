@@ -1,10 +1,22 @@
 import { Audio } from 'expo-av';
 
-export type MusicId = 'music1' | 'music2';
+export type MusicId =
+  | 'music1'
+  | 'music2'
+  | 'music3'
+  | 'music4'
+  | 'music5'
+  | 'music6'
+  | 'music7';;
 
 const musicMap: Record<MusicId, any> = {
   music1: require('../../assets/music/placeholder1.mp3'),
   music2: require('../../assets/music/placeholder2.mp3'),
+  music3: require('../../assets/music/placeholder3.mp3'),
+  music4: require('../../assets/music/placeholder4.m4a'),
+  music5: require('../../assets/music/placeholder5.mp3'),
+  music6: require('../../assets/music/placeholder6.m4a'),
+  music7: require('../../assets/music/placeholder7.m4a'),
 };
 
 class MusicService {

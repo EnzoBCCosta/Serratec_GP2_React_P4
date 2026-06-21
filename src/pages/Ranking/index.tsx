@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, ScrollView } from "react-native";
+
 import RankingCard from "../../components/RankingCard";
 import { useRanking } from "../../context/RankingContext";
 import { styles } from "./Style";
 import Header from "../../components/Header";
-import { Button } from '../../components/Button';
-
+import { Button } from "../../components/Button";
 
 export default function Ranking() {
   const { ranking, loading, clear } = useRanking();
@@ -18,10 +18,8 @@ export default function Ranking() {
 
   return (
     <View style={styles.container}>
-      
       <Header />
 
-      
       <View style={styles.topo}>
         <View style={styles.titulo}>
           <Text style={styles.textoTitulo}>Ranking</Text>
@@ -31,16 +29,22 @@ export default function Ranking() {
           style={styles.voltar}
           onPress={() => navigation.replace("Home")}
         >
-          <Text style={styles.textoVoltar}>Voltar</Text>
+          Voltar
         </Text>
       </View>
 
-    
       <ScrollView>
+        
         <View style={styles.clearContainer}>
-          <Text style={styles.clearText} onPress={handleClearRanking}>
-            Limpar Ranking
-          </Text>
+          <Button
+            title="Limpar Ranking"
+            height={40}
+            widht={180}
+            corButton="#EF4444"
+            corTitle="#fff"
+            raio={8}
+            onPress={handleClearRanking}
+          />
         </View>
 
         <View style={styles.rankingContainer}>

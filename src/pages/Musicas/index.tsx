@@ -11,8 +11,13 @@ import { Button } from '../../components/Button';
 import musicService, { MusicId } from '../../services/musicaService';
 
 const musicas: { id: MusicId; titulo: string }[] = [
-  { id: 'music1', titulo: 'Música Tema Principal'},
+  { id: 'music1', titulo: 'Música Misteriosa'},
   { id: 'music2', titulo: 'Pleasure Quarter' },
+  { id: 'music3', titulo: 'Can You Really Call This A Hotel, I Didnt Receive A Mint On My Pillow Or Anything' },
+  { id: 'music4', titulo: 'Dungeon Meshi OP2' },
+  { id: 'music5', titulo: 'All The Worlds a stage' },
+  { id: 'music6', titulo: 'Wii u party main theme' },
+  { id: 'music7', titulo: 'POTETO CHIP' },
 ];
 
 export default function Configuracoes() {
@@ -22,7 +27,7 @@ export default function Configuracoes() {
   const [musicaSelecionada, setMusicaSelecionada] = useState<MusicId | null>(null);
   const [musicaTocando, setMusicaTocando] = useState(false);
 
-  // 🔹 sincroniza estado da tela com o service
+  // so sincroniza dados com o service
   useEffect(() => {
     setMusicaSelecionada(musicService.getCurrentMusic());
     setMusicaTocando(musicService.isPlaying());
