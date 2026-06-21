@@ -105,6 +105,7 @@ export default function Quiz() {
   pontos: novoPontos,
   total: question.length,
   category: Number(category), // Passa o ID correto como número
+  categoryName: categoryName, 
 });
           return prev;
         }

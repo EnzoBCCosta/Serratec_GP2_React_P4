@@ -29,6 +29,7 @@ export type RootStackParamList = {
     pontos: number;
     total: number;
     category: number;
+    categoryName: string;
   };
 
   Ranking: undefined;
