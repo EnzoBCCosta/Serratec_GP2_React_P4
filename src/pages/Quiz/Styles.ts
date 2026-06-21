@@ -36,7 +36,6 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     respostas: {
-        gap: 30,
-        margin: 10,
+        gap: 20,
     }
 })

@@ -134,7 +134,7 @@ export default function Quiz() {
         </Text>
       </ScrollView>
 
-      <View>
+      <View style={styles.respostas}>
         {memoryOpcoes.map((option, index) => (
           <Button
             key={index}
