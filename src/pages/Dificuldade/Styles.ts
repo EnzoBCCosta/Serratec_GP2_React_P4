@@ -9,8 +9,7 @@ export const styles = StyleSheet.create({
     background: {
         flex: 1,
         width: '100%',
-        backgroundColor: '#180024',
-        alignItems: 'center',
+        backgroundColor: '#180024'
     },
     topo: {
         flexDirection: 'row',
@@ -18,7 +17,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 20,
         width: '100%',
-        paddingHorizontal: 16,
+        paddingHorizontal: -10,
     },
     titulo: {
         backgroundColor: '#64B9F9',
@@ -33,6 +32,12 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
     },
+
+    container2:{
+        alignItems: 'center',
+    },
+
+
     secao: {
         width: '90%',
         marginTop: 28,

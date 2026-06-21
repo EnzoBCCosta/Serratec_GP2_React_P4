@@ -70,6 +70,7 @@ export default function Dificuldade() {
           />
         </View>
 
+      <View style={styles.container2}>
         <View style={styles.secao}>
           <Text style={styles.label}>Quantidade de perguntas:</Text>
           <TextInput
@@ -121,6 +122,7 @@ export default function Dificuldade() {
           />
         </View>
       </View>
+    </View>
     </View>
   );
 }

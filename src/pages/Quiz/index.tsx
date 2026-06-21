@@ -102,10 +102,10 @@ export default function Quiz() {
           return proxima;
         } else {
           navigation.replace('Resultado', {
-            pontos: novoPontos,
-            total: question.length,
-            categoria: categoryName,
-           }); 
+  pontos: novoPontos,
+  total: question.length,
+  category: Number(category), // Passa o ID correto como número
+});
           return prev;
         }
       });

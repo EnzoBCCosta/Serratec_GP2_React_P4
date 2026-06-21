@@ -73,6 +73,7 @@ export default function Categorias() {
               widht={320}
               height={50}
               corButton="#f3ba2b"
+              raio={10}
               onPress={() => handleSelecionarCategoria(item)}
             />
           )}
