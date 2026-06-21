@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Slider from '@react-native-community/slider';
+
 import MusicCard from '../../components/MusicCard';
-import { playMusic, setVolume, pauseMusic, resumeMusic, MusicId } from '../../services/musicaService';
 import Header from '../../components/Header';
 import { Button } from '../../components/Button';
+
+import musicService, { MusicId } from '../../services/musicaService';
 
 const musicas: { id: MusicId; titulo: string }[] = [
   { id: 'music1', titulo: 'Música Tema Principal' },
@@ -13,25 +16,40 @@ const musicas: { id: MusicId; titulo: string }[] = [
 
 export default function Configuracoes() {
   const navigation = useNavigation<any>();
+
   const [volumeMusica, setVolumeMusica] = useState(1);
-  const [musicaSelecionada, setMusicaSelecionada] = useState<MusicId>('music1');
+  const [musicaSelecionada, setMusicaSelecionada] = useState<MusicId | null>(null);
   const [musicaTocando, setMusicaTocando] = useState(false);
 
+  // 🔹 sincroniza estado da tela com o service
+  useEffect(() => {
+    setMusicaSelecionada(musicService.getCurrentMusic());
+    setMusicaTocando(musicService.isPlaying());
+  }, []);
+
   async function handleSelecionarMusica(id: MusicId) {
+    await musicService.play(id);
+    await musicService.setVolume(volumeMusica);
+
     setMusicaSelecionada(id);
-    await playMusic(id);
-    await setVolume(volumeMusica);
     setMusicaTocando(true);
   }
 
   async function handleToggleMusica() {
+    if (!musicaSelecionada) return;
+
     if (musicaTocando) {
-      await pauseMusic();
+      await musicService.pause();
       setMusicaTocando(false);
     } else {
-      await resumeMusic();
+      await musicService.resume();
       setMusicaTocando(true);
     }
+  }
+
+  async function handleVolumeChange(value: number) {
+    setVolumeMusica(value);
+    await musicService.setVolume(value);
   }
 
   return (
@@ -40,9 +58,7 @@ export default function Configuracoes() {
 
       <View style={styles.background}>
         <View style={styles.topo}>
-          <View style={styles.tituloView}>
-            <Text style={styles.texto}>Escolha uma música:</Text>
-          </View>
+          <Text style={styles.texto}>Escolha uma música:</Text>
 
           <Button
             title="Voltar"
@@ -67,6 +83,22 @@ export default function Configuracoes() {
           </View>
         </ScrollView>
 
+        <View style={styles.volumeContainer}>
+          <Text style={styles.volumeLabel}>
+            Volume: {Math.round(volumeMusica * 100)}%
+          </Text>
+
+          <Slider
+            minimumValue={0}
+            maximumValue={1}
+            value={volumeMusica}
+            onValueChange={handleVolumeChange}
+            minimumTrackTintColor="#3B82F6"
+            maximumTrackTintColor="#555"
+            thumbTintColor="#3B82F6"
+          />
+        </View>
+
         <View style={styles.botaoContainer}>
           <TouchableOpacity
             style={[
@@ -82,7 +114,6 @@ export default function Configuracoes() {
                 <View style={styles.pauseBarra} />
               </View>
             ) : (
-              // Ícone de play: triângulo
               <View style={styles.playIcon} />
             )}
           </TouchableOpacity>
@@ -107,9 +138,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 24,
   },
-  tituloView: {
-    flex: 1,
-  },
   texto: {
     fontSize: 22,
     fontWeight: 'bold',
@@ -121,16 +149,16 @@ const styles = StyleSheet.create({
   secao: {
     marginBottom: 28,
   },
-  label: {
-    color: '#ccc',
-    fontSize: 15,
-    marginBottom: 8,
-    fontWeight: '600',
+  volumeContainer: {
+    marginBottom: 20,
   },
-
+  volumeLabel: {
+    color: '#fff',
+    marginBottom: 6,
+  },
   botaoContainer: {
     alignItems: 'center',
-    paddingVertical: 20,
+    paddingVertical: 10,
   },
   botaoCircular: {
     width: 70,
