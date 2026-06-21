@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Alert } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-import { styles } from './Styles';
+import { styles } from './styles';
 import { Button } from '../../components/Button';
 import Header from '../../components/Header';
 

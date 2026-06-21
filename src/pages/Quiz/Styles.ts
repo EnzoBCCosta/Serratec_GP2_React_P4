@@ -37,5 +37,6 @@ export const styles = StyleSheet.create({
     },
     respostas: {
         gap: 30,
+        margin: 10,
     }
 })

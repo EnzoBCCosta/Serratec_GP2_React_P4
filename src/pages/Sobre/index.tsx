@@ -2,8 +2,10 @@ import { View, Text, Image, ScrollView, Animated, TouchableOpacity, Linking } fr
 import { styles } from "./Styles";
 import React, { useEffect, useRef } from "react";
 import { Button } from '../../components/Button';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Sobre() {
+  const navigation = useNavigation<any>();
   const posicao = useRef(new Animated.Value(1000)).current;
   
   useEffect(() => {
@@ -142,7 +144,7 @@ export default function Sobre() {
           widht={90} 
           corButton="red"
           raio={2}
-
+          onPress={() => navigation.goBack()}
         />
       </View>
 

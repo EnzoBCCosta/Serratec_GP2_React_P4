@@ -5,8 +5,8 @@ export type MusicId =
   | 'music2';
 
 const musicMap: Record<MusicId, any> = {
-  music1: require('../assets/musicas/placeholder1.mp3'),
-  music2: require('../assets/musicas/placeholder2.mp3'),
+  music1: require('../../assets/music/placeholder1.mp3'),
+  music2: require('../../assets/music/placeholder2.mp3'),
 };
 
 let currentSound: Audio.Sound | null = null;

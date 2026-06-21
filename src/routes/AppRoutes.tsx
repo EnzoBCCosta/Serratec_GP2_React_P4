@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Home from "../pages/home/home";
 import Categorias from "../pages/Categorias";
-import Dificuldade from "../pages/Dificuldade/Index";
+import Dificuldade from "../pages/Dificuldade";
 import Quiz from "../pages/Quiz";
 import Resultado from "../pages/Resultado";
 import Ranking from "../pages/Ranking";
