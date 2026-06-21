@@ -38,6 +38,10 @@ export default function Resultado() {
     navigation.navigate('Ranking');
   }
 
+  function handleHome() {
+    navigation.replace('Home');
+  }
+
   return (
     <View style={styles.container}>
       <Header />
@@ -83,6 +87,16 @@ export default function Resultado() {
             title="Ver Ranking"
             onPress={handleVerRanking}
             corButton="#64B9F9"
+            widht={320}
+            height={47}
+            raio={20}
+          />
+        </View>
+
+        <View style={styles.botao}>
+          <Button
+            title="Voltar para o início"
+            onPress={handleHome}
             widht={320}
             height={47}
             raio={20}
