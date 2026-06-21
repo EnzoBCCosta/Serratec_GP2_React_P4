@@ -88,17 +88,6 @@ export default function Resultado() {
             raio={20}
           />
         </View>
-
-        <View style={styles.botao}>
-          <Button
-            title="Ver Ranking"
-            onPress={() => navigation.goBack()}
-            corButton="#64B9F9"
-            widht={320}
-            height={47}
-            raio={20}
-          />
-        </View>
       </View> 
     </View> 
   );
