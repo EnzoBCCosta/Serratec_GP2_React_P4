@@ -1,12 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Quiz from './src/pages/Quiz/index'
-import Header from './src/components/Header';
-import React from 'react';
+import React from "react";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import { RankingProvider } from "./src/context/RankingContext";
+
+import Home from "./src/pages/home/home";
+import Categorias from "./src/pages/Categorias";
+import Dificuldade from "./src/pages/Dificuldade";
+import Quiz from "./src/pages/Quiz";
+import Resultado from "./src/pages/Resultado/index";
+import Ranking from "./src/pages/Ranking";
 import Sobre from './src/pages/Sobre';
+import Musicas from "./src/pages/Musicas";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <Sobre></Sobre>
-  );
+    <RankingProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Categorias" component={Categorias} />
+          <Stack.Screen name="Dificuldade" component={Dificuldade} />
+          <Stack.Screen name="Quiz" component={Quiz} />
+          <Stack.Screen name="Resultado" component={Resultado} />
+          <Stack.Screen name="Ranking" component={Ranking} />
+          <Stack.Screen name="Sobre" component={Sobre} />
+          <Stack.Screen name="Musicas" component={Musicas} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </RankingProvider>
+  )
 }

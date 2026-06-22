@@ -1,21 +1,25 @@
 import { View, Text, Image, ScrollView, Animated, TouchableOpacity, Linking } from "react-native";
 import { styles } from "./Styles";
 import React, { useEffect, useRef } from "react";
-
+import { Button } from '../../components/Button';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Sobre() {
-  
+  const navigation = useNavigation<any>();
   const posicao = useRef(new Animated.Value(1000)).current;
   
   useEffect(() => {
   Animated.timing(posicao, {
-    toValue: 0,
+    toValue: -50,
     duration: 10000,
     useNativeDriver: true,
   }).start();
 }, []);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4b51a1c797f2952ef21b214c2a0763aada50ed43
   return (
-  
   <ScrollView contentContainerStyle={styles.container}>
     <Animated.View
     
@@ -29,7 +33,10 @@ export default function Sobre() {
         source={require("../../../assets/LOGO-QUIZ.png")}
         style={styles.logo}
       />
+<<<<<<< HEAD
       
+=======
+>>>>>>> 4b51a1c797f2952ef21b214c2a0763aada50ed43
 
       <Text style={styles.titulo}>
         🎮 Sobre o Aplicativo
@@ -137,10 +144,18 @@ export default function Sobre() {
 
       </Text>
     </Animated.View>
-</ScrollView>
+    <View style={styles.container}>
+        <Button
+          title="Voltar"
+          height={45}
+          widht={90} 
+          corButton="red"
+          raio={2}
+          onPress={() => navigation.goBack()}
+        />
+      </View>
 
-
-
+    </ScrollView>
     );
 }
 
