@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RankingProvider } from "./src/context/RankingContext";
 
 import Categorias from "./src/pages/Categorias";
-import Dificuldade from "./src/pages/Dificuldade/index";
+import Dificuldade from "./src/pages/Dificuldade/Index";
 import Quiz from "./src/pages/Quiz";
 import Resultado from "./src/pages/Resultado/index";
 import Sobre from './src/pages/Sobre';

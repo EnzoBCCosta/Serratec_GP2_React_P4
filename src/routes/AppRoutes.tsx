@@ -4,7 +4,7 @@ import React from 'react'
 
 import Home from "../pages/home/home";
 import Categorias from "../pages/Categorias";
-import Dificuldade from "../pages/Dificuldade/index";
+import Dificuldade from "../pages/Dificuldade/Index";
 import Quiz from "../pages/Quiz";
 import Resultado from "../pages/Resultado";
 import Ranking from "../pages/Ranking";
