@@ -14,7 +14,7 @@ const musicas: { id: MusicId; titulo: string }[] = [
   { id: 'music1', titulo: 'Música Misteriosa'},
   { id: 'music2', titulo: 'Pleasure Quarter' },
   { id: 'music3', titulo: 'Can You Really Call This A Hotel, I Didnt Receive A Mint On My Pillow Or Anything' },
-  { id: 'music4', titulo: 'Dungeon Meshi OP2' },
+  { id: 'music4', titulo: '運命 (Unmei)' },
   { id: 'music5', titulo: 'All The Worlds a stage' },
   { id: 'music6', titulo: 'Wii u party main theme' },
   { id: 'music7', titulo: 'POTETO CHIP' },

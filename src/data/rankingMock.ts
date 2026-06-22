@@ -1,4 +1,4 @@
-import { RankingPlayer } from "../../types/ranking";
+import { RankingPlayer } from "../../@types/ranking";
 
 export const rankingMock: RankingPlayer[] = [
   {
