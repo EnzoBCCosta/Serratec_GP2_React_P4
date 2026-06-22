@@ -4,7 +4,7 @@ import {
   addPlayer as addPlayerStorage,
   clearRanking
 } from "../services/rankingStorage";
-import { RankingPlayer } from "../types/ranking";
+import { RankingPlayer } from "../../@types/ranking";
 
 type RankingContextData = {
   ranking: RankingPlayer[];
