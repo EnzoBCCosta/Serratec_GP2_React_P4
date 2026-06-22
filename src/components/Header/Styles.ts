@@ -9,12 +9,13 @@ export const styles = StyleSheet.create({
     },
     header: {
         backgroundColor: '#C41E3A',
-        height: 80,
+        height: 40,
         justifyContent: 'center',
         alignItems: 'center',
     },
     logo: {
         width: 140,
         height: 60,
+        alignItems: 'center',
     }
 });
