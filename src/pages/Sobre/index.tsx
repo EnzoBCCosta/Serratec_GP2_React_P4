@@ -141,17 +141,6 @@ export default function Sobre() {
 
       </Text>
     </Animated.View>
-    <View style={styles.container}>
-        <Button
-          title="Voltar"
-          height={45}
-          widht={90} 
-          corButton="red"
-          raio={2}
-          onPress={() => navigation.goBack()}
-        />
-      </View>
-
     </ScrollView>
     );
 }

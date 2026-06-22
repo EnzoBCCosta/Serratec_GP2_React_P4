@@ -7,6 +7,7 @@ container: {
     backgroundColor: "#1E002F",
     alignItems: "center",
     padding: 20,
+    marginBottom: 20,
   },
 
 logo: {
