@@ -35,11 +35,11 @@ export default function Resultado() {
       totalPerguntas: total,
     });
 
-    navigation.navigate('Ranking');
+    navigation.navigate('TabRoutes', { screen: 'Ranking' });
   }
 
   function handleHome() {
-    navigation.replace('Home');
+    navigation.navigate('TabRoutes', { screen: 'Home' });
   }
 
   return (

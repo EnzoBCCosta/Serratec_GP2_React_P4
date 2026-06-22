@@ -4,7 +4,7 @@ import React from 'react'
 
 import Home from "../pages/home/home";
 import Categorias from "../pages/Categorias";
-import Dificuldade from "../pages/Dificuldade";
+import Dificuldade from "../pages/Dificuldade/index";
 import Quiz from "../pages/Quiz";
 import Resultado from "../pages/Resultado";
 import Ranking from "../pages/Ranking";
@@ -12,7 +12,7 @@ import Ranking from "../pages/Ranking";
 import TabRoutes from "./TabRoutes";
 
 export type RootStackParamList = {
-  MainTabs: undefined;
+  TabRoutes: {screen: string} | undefined;
 
   Categorias: undefined;
 
@@ -41,8 +41,10 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function AppRoutes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false } }>
-        <Stack.Screen name="MainTabs" component={TabRoutes} />
+      <Stack.Navigator initialRouteName="TabRoutes" screenOptions={{ headerShown: false } }>
+
+        <Stack.Screen name="TabRoutes" component={TabRoutes} />
+
         <Stack.Screen name="Categorias" component={Categorias} />
         <Stack.Screen name="Dificuldade" component={Dificuldade} />
         <Stack.Screen name="Quiz" component={Quiz} />

@@ -27,7 +27,7 @@ export default function Ranking() {
 
         <Text
           style={styles.voltar}
-          onPress={() => navigation.replace("Home")}
+          onPress={() => navigation.navigate("Home")}
         >
           <Text style={styles.textoTitulo}>Voltar</Text>
         </Text>

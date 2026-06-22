@@ -95,22 +95,21 @@ export default function Quiz() {
     }
 
     setTimeout(() => {
-      setCount(prev => {
-        const proxima = prev + 1;
+
+        const proxima = count + 1;
 
         if (proxima < question.length) {
-          return proxima;
+          setCount(proxima);
         } else {
           navigation.replace('Resultado', {
-  pontos: novoPontos,
-  total: question.length,
-  category: Number(category), // Passa o ID correto como número
-  categoryName: categoryName, 
-});
-          return prev;
+            pontos: novoPontos,
+            total: question.length,
+            category: Number(category),
+            categoryName: categoryName, 
+          });
         }
-      });
     }, 3000);
+
   }
 
   if (question.length === 0) {

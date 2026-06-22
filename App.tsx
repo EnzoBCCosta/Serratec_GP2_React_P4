@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RankingProvider } from "./src/context/RankingContext";
 
 import Categorias from "./src/pages/Categorias";
-import Dificuldade from "./src/pages/Dificuldade";
+import Dificuldade from "./src/pages/Dificuldade/index";
 import Quiz from "./src/pages/Quiz";
 import Resultado from "./src/pages/Resultado/index";
 import Sobre from './src/pages/Sobre';
@@ -23,9 +23,8 @@ export default function App() {
           initialRouteName="TabRoutes"
           screenOptions={{ headerShown: false }}
         >
-
           <Stack.Screen name="TabRoutes" component={TabRoutes} />
-          
+
           <Stack.Screen name="Categorias" component={Categorias} />
           <Stack.Screen name="Dificuldade" component={Dificuldade} />
           <Stack.Screen name="Resultado" component={Resultado} />

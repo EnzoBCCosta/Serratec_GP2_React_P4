@@ -39,6 +39,10 @@ export default function TabRoutes() {
             }}
         >
 
+            <Tab.Screen name='Home' component={Home}
+            options={{
+            }}/>
+
             <Tab.Screen name="Configuração" component={Configuracoes}
             options={{
             }} />
