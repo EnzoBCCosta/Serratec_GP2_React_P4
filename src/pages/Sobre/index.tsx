@@ -15,10 +15,6 @@ export default function Sobre() {
     useNativeDriver: true,
   }).start();
 }, []);
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b51a1c797f2952ef21b214c2a0763aada50ed43
   return (
   <ScrollView contentContainerStyle={styles.container}>
     <Animated.View
@@ -33,10 +29,6 @@ export default function Sobre() {
         source={require("../../../assets/LOGO-QUIZ.png")}
         style={styles.logo}
       />
-<<<<<<< HEAD
-      
-=======
->>>>>>> 4b51a1c797f2952ef21b214c2a0763aada50ed43
 
       <Text style={styles.titulo}>
         🎮 Sobre o Aplicativo
@@ -99,37 +91,37 @@ export default function Sobre() {
             </Text>
         </TouchableOpacity> {'\n'}
         <TouchableOpacity
-          onPress={() => Linking.openURL("")}>
+          onPress={() => Linking.openURL("https://github.com/CarEduCar")}>
             <Text style={styles.link}>
               Carlos Eduardo
             </Text>
         </TouchableOpacity> {'\n'}
         <TouchableOpacity
-          onPress={() => Linking.openURL("")}>
+          onPress={() => Linking.openURL("https://github.com/EnzoBCCosta")}>
             <Text style={styles.link}>
               Enzo Costa
             </Text>
         </TouchableOpacity> {'\n'}
         <TouchableOpacity
-          onPress={() => Linking.openURL("")}>
+          onPress={() => Linking.openURL("https://github.com/phelipe1327-cell")}>
             <Text style={styles.link}>
               Felipe Damasio
             </Text>
         </TouchableOpacity> {'\n'}
         <TouchableOpacity
-          onPress={() => Linking.openURL("")}>
+          onPress={() => Linking.openURL("https://github.com/Gabrielw342")}>
             <Text style={styles.link}>
               Gabriel Ecard
             </Text>
         </TouchableOpacity> {'\n'}
         <TouchableOpacity
-          onPress={() => Linking.openURL("")}>
+          onPress={() => Linking.openURL("https://github.com/kennypavelka")}>
             <Text style={styles.link}>
               Kenny Pavelca 
             </Text>
         </TouchableOpacity> {'\n'}
         <TouchableOpacity
-          onPress={() => Linking.openURL("")}>
+          onPress={() => Linking.openURL("https://github.com/vitorsilva-75")}>
             <Text style={styles.link}>
               Vitor Ribeiro 
             </Text>

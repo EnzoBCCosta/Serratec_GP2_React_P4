@@ -38,7 +38,7 @@ secaoProgramacao:{
 },
 
 texto:{
-    color:"#ff0000",
+    color:"#FFFFFF",
     fontSize: 16,
     textAlign: "center",
     lineHeight: 30,
