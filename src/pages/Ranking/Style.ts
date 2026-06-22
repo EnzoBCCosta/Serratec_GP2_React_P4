@@ -12,7 +12,6 @@ export const styles = StyleSheet.create({
     backgroundColor: "#180024",
   },
 
-  /* TOPO DA TELA (Ranking + Voltar vou ver depois pra usar os card do cadu) */
   topo: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -50,19 +49,13 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  /* botao pra limpar rank */
+  /* botao so pra limpar o rank */
   clearContainer: {
     alignItems: "center",
     marginVertical: 20,
   },
 
-  clearText: {
-    color: "#E63946",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-
-  /* a lista em si */
+  /* lista do rank  */
   rankingContainer: {
     paddingHorizontal: 20,
     paddingBottom: 30,

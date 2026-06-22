@@ -15,7 +15,7 @@ export default function Resultado() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const route = useRoute<RouteProp<RootStackParamList, 'Resultado'>>();
 
-  const { pontos, total, category } = route.params;
+  const { pontos, total, category, categoryName } = route.params;
   
   const percentual = Math.round((pontos / total) * 100);
   const [nome, setNome] = useState('');
@@ -30,7 +30,7 @@ export default function Resultado() {
 
     await addPlayer({
       nome: nome.trim(),
-      categoria: category,
+      categoria: categoryName,
       acertos: pontos,
       totalPerguntas: total,
     });

@@ -1,7 +1,7 @@
 import React from "react";
 import { styles } from "./Styles";
 import { View, Text, StyleSheet } from "react-native";
-import { RankingPlayer } from "../../../types/ranking";
+import { RankingPlayer } from "../../../@types/ranking";
 
 export default function RankingCard({
   nome,
