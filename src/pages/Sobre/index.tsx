@@ -1,22 +1,21 @@
 import { View, Text, Image, ScrollView, Animated, TouchableOpacity, Linking } from "react-native";
 import { styles } from "./Styles";
 import React, { useEffect, useRef } from "react";
-
+import { Button } from '../../components/Button';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Sobre() {
-  
+  const navigation = useNavigation<any>();
   const posicao = useRef(new Animated.Value(1000)).current;
   
   useEffect(() => {
   Animated.timing(posicao, {
-    toValue: 0,
+    toValue: -50,
     duration: 10000,
     useNativeDriver: true,
   }).start();
 }, []);
-  
   return (
-  
   <ScrollView contentContainerStyle={styles.container}>
     <Animated.View
     
@@ -25,12 +24,11 @@ export default function Sobre() {
       alignItems: "center",
       transform: [{ translateY: posicao }],
     }}>
-
+    
     <Image
         source={require("../../../assets/LOGO-QUIZ.png")}
         style={styles.logo}
       />
-
 
       <Text style={styles.titulo}>
         🎮 Sobre o Aplicativo
@@ -69,11 +67,16 @@ export default function Sobre() {
       </Text>
 
       <Text style={styles.secaoMusica}>
-       🎵 Músicas :
+       🎵 Músicas :{'\n'}
       </Text>
 
       <Text style={styles.texto}>
-        Música tema - Nome do responsável
+        Música Misteriosa - ??? {'\n'}{'\n'}
+        Pleasure Quarter - Kohei Tanaka (Gravity Rush OST){'\n'}{'\n'}
+        Can You Really Call This A Hotel, I Didnt Receive A Mint On My Pillow Or Anything - Toby Fox (Undertale){'\n'}{'\n'}
+        運命 (Unmei) - sumika {'\n'}{'\n'}
+        All The Worlds a stage - Hoyoverse, KOPI (Genshin impact){'\n'}{'\n'}
+        Wii u main theme - Nintendo (Wii){'\n'}{'\n'}
       </Text>
 
       <Text style={styles.secaoGit}>
@@ -88,37 +91,37 @@ export default function Sobre() {
             </Text>
         </TouchableOpacity> {'\n'}
         <TouchableOpacity
-          onPress={() => Linking.openURL("")}>
+          onPress={() => Linking.openURL("https://github.com/CarEduCar")}>
             <Text style={styles.link}>
               Carlos Eduardo
             </Text>
         </TouchableOpacity> {'\n'}
         <TouchableOpacity
-          onPress={() => Linking.openURL("")}>
+          onPress={() => Linking.openURL("https://github.com/EnzoBCCosta")}>
             <Text style={styles.link}>
               Enzo Costa
             </Text>
         </TouchableOpacity> {'\n'}
         <TouchableOpacity
-          onPress={() => Linking.openURL("")}>
+          onPress={() => Linking.openURL("https://github.com/phelipe1327-cell")}>
             <Text style={styles.link}>
               Felipe Damasio
             </Text>
         </TouchableOpacity> {'\n'}
         <TouchableOpacity
-          onPress={() => Linking.openURL("")}>
+          onPress={() => Linking.openURL("https://github.com/Gabrielw342")}>
             <Text style={styles.link}>
               Gabriel Ecard
             </Text>
         </TouchableOpacity> {'\n'}
         <TouchableOpacity
-          onPress={() => Linking.openURL("")}>
+          onPress={() => Linking.openURL("https://github.com/kennypavelka")}>
             <Text style={styles.link}>
               Kenny Pavelca 
             </Text>
         </TouchableOpacity> {'\n'}
         <TouchableOpacity
-          onPress={() => Linking.openURL("")}>
+          onPress={() => Linking.openURL("https://github.com/vitorsilva-75")}>
             <Text style={styles.link}>
               Vitor Ribeiro 
             </Text>
@@ -138,10 +141,7 @@ export default function Sobre() {
 
       </Text>
     </Animated.View>
-</ScrollView>
-
-
-
+    </ScrollView>
     );
 }
 

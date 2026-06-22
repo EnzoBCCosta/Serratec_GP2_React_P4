@@ -8,26 +8,34 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     card: {
-        width: '100%',
-        marginTop: 100,
-        marginBottom: 50,
         alignSelf: 'flex-start',
+        marginTop: 100,
+        marginBottom: 30,
     },
     questao: {
-        width: '100%',
-        marginBottom: 100,
-        alignSelf: 'flex-start',
-        marginLeft: 20,
-        paddingRight: 40,
+        maxHeight: '30%',
+        width: '90%',
+        alignSelf: 'center',
+        marginBottom: 30,
+        
+        backgroundColor: 'rgba(100, 185, 249, 0.48)',
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: 'rgba(100, 185, 249, 0.44)',
+        shadowColor: '#000000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 30,
+        elevation: 4, 
+
     },
     enunciadoTexto: {
         color: 'white',
-        alignSelf: 'center',
         fontSize: 20,
+        padding: 10,
+        fontWeight: 'bold',
     },
     respostas: {
-        gap: 30,
-        alignItems: 'center',
-
+        gap: 20,
     }
 })
