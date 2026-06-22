@@ -9,8 +9,11 @@ import Quiz from "../pages/Quiz";
 import Resultado from "../pages/Resultado";
 import Ranking from "../pages/Ranking";
 
+import TabRoutes from "./TabRoutes";
+
 export type RootStackParamList = {
-  Home: undefined;
+  MainTabs: undefined;
+
   Categorias: undefined;
 
   Dificuldade: {
@@ -30,8 +33,6 @@ export type RootStackParamList = {
     total: number;
     category: number;
   };
-
-  Ranking: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -39,13 +40,12 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function AppRoutes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Home" component={Home} />
+      <Stack.Navigator screenOptions={{ headerShown: false } }>
+        <Stack.Screen name="MainTabs" component={TabRoutes} />
         <Stack.Screen name="Categorias" component={Categorias} />
         <Stack.Screen name="Dificuldade" component={Dificuldade} />
         <Stack.Screen name="Quiz" component={Quiz} />
         <Stack.Screen name="Resultado" component={Resultado} />
-        <Stack.Screen name="Ranking" component={Ranking} />
       </Stack.Navigator>
     </NavigationContainer>
   );
