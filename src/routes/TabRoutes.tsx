@@ -17,7 +17,7 @@ export default function TabRoutes() {
                 
                 let corDeFundo = '#64B9F9';
                 
-                if (route.name === 'Volume') corDeFundo = '#C41E3A';
+                if (route.name === 'Musica') corDeFundo = '#C41E3A';
                 if (route.name === 'Ranking') corDeFundo = '#F3BA2B';
                 if (route.name === 'Home') corDeFundo = '#1a0d2e';
 
@@ -45,7 +45,7 @@ export default function TabRoutes() {
             style={{width: 30, height:30, resizeMode: 'contain', tintColor: 'white'}} />)
             }} />
 
-            <Tab.Screen name="Volume" component={Configuracoes}
+            <Tab.Screen name="Musica" component={Configuracoes}
             options={{ 
                 tabBarIcon: () => (<Image source={require('../../assets/volume.png')}
             style={{width: 30, height:30, resizeMode: 'contain', tintColor: 'white'}} />)
@@ -56,7 +56,7 @@ export default function TabRoutes() {
             style={{width: 30, height:30, resizeMode: 'contain', tintColor: 'white'}} />)
             }} />
 
-            <Tab.Screen name="Musica" component={Sobre}
+            <Tab.Screen name="Sobre" component={Sobre}
             options={{ tabBarIcon: () => (<Image source={require('../../assets/sobre.png')}
             style={{width: 30, height:30, resizeMode: 'contain', tintColor: 'white'}} />)
             }}/>
