@@ -14,7 +14,6 @@ export default function Sobre() {
     useNativeDriver: true,
   }).start();
 }, []);
-  
   return (
   
   <ScrollView contentContainerStyle={styles.container}>
@@ -25,12 +24,12 @@ export default function Sobre() {
       alignItems: "center",
       transform: [{ translateY: posicao }],
     }}>
-
+    
     <Image
         source={require("../../../assets/LOGO-QUIZ.png")}
         style={styles.logo}
       />
-
+      
 
       <Text style={styles.titulo}>
         🎮 Sobre o Aplicativo
