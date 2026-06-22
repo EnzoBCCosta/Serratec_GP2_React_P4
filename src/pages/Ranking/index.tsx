@@ -29,7 +29,7 @@ export default function Ranking() {
           style={styles.voltar}
           onPress={() => navigation.replace("Home")}
         >
-          Voltar
+          <Text style={styles.textoTitulo}>Voltar</Text>
         </Text>
       </View>
 

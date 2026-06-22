@@ -75,11 +75,16 @@ export default function Sobre() {
       </Text>
 
       <Text style={styles.secaoMusica}>
-       🎵 Músicas :
+       🎵 Músicas :{'\n'}
       </Text>
 
       <Text style={styles.texto}>
-        Música tema - Nome do responsável
+        Música Misteriosa - ??? {'\n'}{'\n'}
+        Pleasure Quarter - Kohei Tanaka (Gravity Rush OST){'\n'}{'\n'}
+        Can You Really Call This A Hotel, I Didnt Receive A Mint On My Pillow Or Anything - Toby Fox (Undertale){'\n'}{'\n'}
+        運命 (Unmei) - sumika {'\n'}{'\n'}
+        All The Worlds a stage - Hoyoverse, KOPI (Genshin impact){'\n'}{'\n'}
+        Wii u main theme - Nintendo (Wii){'\n'}{'\n'}
       </Text>
 
       <Text style={styles.secaoGit}>

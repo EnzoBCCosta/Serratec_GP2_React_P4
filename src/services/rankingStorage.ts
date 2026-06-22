@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { RankingPlayer } from "../../types/ranking";
+import { RankingPlayer } from "../../@types/ranking";
 
 const STORAGE_KEY = "@quizgame_ranking";
 
