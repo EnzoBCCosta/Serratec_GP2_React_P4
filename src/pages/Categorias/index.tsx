@@ -38,11 +38,13 @@ export default function Categorias() {
         <View style={styles.container}>
             <Header/>
             <View style={styles.background}>
+                <View style={styles.topo}>
+                    <View style={styles.titulo}>
+                        <Text style={styles.texto}>Escolha um tema:</Text>
+                    </View>
 
-                <View style={styles.titulo}>
-                    <Text style={styles.texto}>Escolha um tema:</Text>
+                    <Button title="Voltar" height={45} widht={90} corButton='red' raio={2}/>
                 </View>
-
                 <FlatList
                     data={categorias}
                     keyExtractor={(item) => item.id.toString()}
